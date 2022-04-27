@@ -1,4 +1,8 @@
 const request = require('request'); // require the request library
+  
+// Printing process.argv property value
+let catBreed = process.argv
+catBreed = catBreed.slice(2); // gets the command line arguments and ignores initial items
 
 // The endpoint to allow us to search breed information is: 
 // https://api.thecatapi.com/v1/breeds/search --> returns []
@@ -11,19 +15,18 @@ const request = require('request'); // require the request library
 // /breeds/search
 // Search for a Breed by using part of it’s name as the ‘q’ query parameter.
 // e.g ?q=sib to search for Siberian
-request('https://api.thecatapi.com/v1/breeds/search?q=sib', (error, response, body) => {
+request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed[0]}`, (error, response, body) => {
 
-  console.log('error:', error); // Print the error if one occurred
-  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  // console.log('error:', error); // Print the error if one occurred
+  // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
   
-  console.log('body:', body); // Print the HTML for the page
-  console.log('typeof body:', typeof body) // returns string
+  // console.log('body:', body); // Print the HTML for the page
+  // console.log('typeof body:', typeof body) // returns string
   const data = JSON.parse(body); // use JSON.parse to convert the JSON string into an actual object
-  console.log('data:', data); 
-  console.log('typeof data:', typeof data); // returns object
+  // console.log('data:', data); 
+  // console.log('typeof data:', typeof data); // returns object
 
-  console.log(data[0].description); // Access the first entry in the data array and print out the description for the user.
-
+  console.log('Dog name search:', catBreed[0], 'Dog description:', data[0].description); // Access the first entry in the data array and print out the description for the user.
 
 });
 
