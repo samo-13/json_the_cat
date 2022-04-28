@@ -4,6 +4,7 @@ const request = require('request'); // require the request library
 let catBreed = process.argv
 catBreed = catBreed.slice(2); // gets the command line arguments and ignores initial items
 
+
 // The endpoint to allow us to search breed information is: 
 // https://api.thecatapi.com/v1/breeds/search --> returns []
 
@@ -15,7 +16,7 @@ catBreed = catBreed.slice(2); // gets the command line arguments and ignores ini
 // /breeds/search
 // Search for a Breed by using part of it’s name as the ‘q’ query parameter.
 // e.g ?q=sib to search for Siberian
-request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed[0]}`, (error, response, body) => {
+request(`https://api.thecatapi.com/v1/breeds/search?q1=${catBreed[0]}`, (error, response, body) => {
 
   // console.log('error:', error); // Print the error if one occurred
   // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
@@ -26,7 +27,27 @@ request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed[0]}`, (error, r
   // console.log('data:', data); 
   // console.log('typeof data:', typeof data); // returns object
 
-  console.log('Dog name search:', catBreed[0], 'Dog description:', data[0].description); // Access the first entry in the data array and print out the description for the user.
+  // if (data.length === 0) {
+  //   let noResults = 'No results found'
+  //   return noResults
+  // }
+
+  if (error !== false) {
+    let errorMessage = 'ERROR FOUND'
+    console.log(errorMessage)
+    return
+  }
+
+  if (data.length === 0) {
+    let noResults = 'No results found'
+    console.log(noResults)
+    return
+  }
+
+  if (data !== undefined) {
+    console.log('Dog name search:', catBreed[0], '\n', 'Dog description:', data[0].description); // Access the first entry in the data array and print out the description for the user.
+    return
+  }
 
 });
 
