@@ -16,7 +16,7 @@ catBreed = catBreed.slice(2); // gets the command line arguments and ignores ini
 // /breeds/search
 // Search for a Breed by using part of it’s name as the ‘q’ query parameter.
 // e.g ?q=sib to search for Siberian
-request(`https://api.thecatapi.com/v1/breeds/search?q1=${catBreed[0]}`, (error, response, body) => {
+request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed[0]}`, (error, response, body) => {
 
   // console.log('error:', error); // Print the error if one occurred
   // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
