@@ -1,11 +1,11 @@
 const request = require('request'); // require the request library
   
 // Printing process.argv property value
-let catBreed = process.argv
+let catBreed = process.argv;
 catBreed = catBreed.slice(2); // gets the command line arguments and ignores initial items
 
 
-// The endpoint to allow us to search breed information is: 
+// The endpoint to allow us to search breed information is:
 // https://api.thecatapi.com/v1/breeds/search --> returns []
 
 // https://api.thecatapi.com/v1/breeds/search?q=sib
@@ -21,20 +21,20 @@ request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed[0]}`, (error, r
   const data = JSON.parse(body); // use JSON.parse to convert the JSON string into an actual object
 
   if (error !== false) {
-    let errorMessage = 'ERROR FOUND'
-    console.log(errorMessage)
-    return
+    let errorMessage = 'ERROR FOUND';
+    console.log(errorMessage);
+    return;
   }
 
   if (data.length === 0) {
-    let noResults = 'No results found'
-    console.log(noResults)
-    return
+    let noResults = 'No results found';
+    console.log(noResults);
+    return;
   }
 
   if (data !== undefined) {
     console.log('Dog name search:', catBreed[0], '\n', 'Dog description:', data[0].description); // Access the first entry in the data array and print out the description for the user.
-    return
+    return;
   }
 
 });
