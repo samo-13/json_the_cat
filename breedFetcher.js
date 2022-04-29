@@ -22,7 +22,8 @@ request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed}`, (error, resp
     console.log('Error details:', error);
   }
 
-  // use JSON.parse to convert the JSON string into an actual objec
+  // use JSON.parse to convert the JSON string into an actual object
+  // data declaration
   const data = JSON.parse(body);
 
   // keep below data declaration
@@ -32,7 +33,8 @@ request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed}`, (error, resp
     return;
   }
 
-  // Access the first entry in the data array and print out the description for the user.t
+  // access the first entry in the data array and print out the description for the user
+  // keep below if statements
   let description = console.log(`Dog name search: ${catBreed} \n Dog description: ${data[0].description}`);
   return description;
 });
