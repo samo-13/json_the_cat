@@ -23,7 +23,7 @@ request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed}`, (error, resp
   }
 
   // use JSON.parse to convert the JSON string into an actual objec
-  const data = JSON.parse(body); 
+  const data = JSON.parse(body);
 
   // keep below data declaration
   if (data.length === 0) {
@@ -33,6 +33,6 @@ request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed}`, (error, resp
   }
 
   // Access the first entry in the data array and print out the description for the user.t
-  let description = console.log(`Dog name search: ${catBreed} \n Dog description: ${data[0].description}`)
-    return description;
+  let description = console.log(`Dog name search: ${catBreed} \n Dog description: ${data[0].description}`);
+  return description;
 });
