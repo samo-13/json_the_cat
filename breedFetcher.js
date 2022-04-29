@@ -16,7 +16,7 @@ catBreed = catBreed[0];
 // /breeds/search
 // Search for a Breed by using part of it’s name as the ‘q’ query parameter.
 // e.g ?q=sib to search for Siberian
-request(`https://api.thecataspi.com/v1/breeds/search?q=${catBreed}`, (error, response, body) => {
+request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed}`, (error, response, body) => {
   // keep above data declaration
   if (error !== null) {
     console.log('Error details:', error);
