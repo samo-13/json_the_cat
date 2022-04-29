@@ -4,7 +4,6 @@ const request = require('request'); // require the request library
 let catBreed = process.argv;
 catBreed = catBreed.slice(2); // gets the command line arguments and ignores initial items
 
-
 // The endpoint to allow us to search breed information is:
 // https://api.thecatapi.com/v1/breeds/search --> returns []
 
@@ -20,7 +19,7 @@ request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed[0]}`, (error, r
 
   const data = JSON.parse(body); // use JSON.parse to convert the JSON string into an actual object
 
-  if (error !== false) {
+  if (error === false) {
     let errorMessage = 'ERROR FOUND';
     console.log(errorMessage);
     return;
@@ -38,7 +37,3 @@ request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed[0]}`, (error, r
   }
 
 });
-
-
-
-
