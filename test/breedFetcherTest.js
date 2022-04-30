@@ -16,17 +16,17 @@ describe('fetchBreedDescription', () => {
 
       done();
     });
-  })
+  });
   // expect the first argument for our callback (err) to be set, and desc to be null
-    it('returns Breed description: Undefined', (done) => {
-      fetchBreedDescription('Siberrr', (err, desc) => {
-        assert.equal(err, 'Breed does not exist');
+  it('returns Breed description: Undefined', (done) => {
+    fetchBreedDescription('Siberrr', (err) => {
+      assert.equal(err, 'Breed does not exist');
   
-        const expectedErr = 'Breed does not exist';
+      const expectedErr = 'Breed does not exist';
   
-        assert.equal(expectedErr, err);
+      assert.equal(expectedErr, err);
   
-        done();
-      });
-  })
+      done();
+    });
+  });
 });
