@@ -31,7 +31,8 @@ const fetchBreedDescription = function(catBreed, callback) {
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     
     if (data[0] === undefined) {
-      callback(null);
+      let error = 'Breed does not exist'
+      callback(error);
       return; // Needs to return here to fix error bug
     }
 
