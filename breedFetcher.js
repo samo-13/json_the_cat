@@ -15,25 +15,26 @@ const request = require('request'); // require the request library
 const fetchBreedDescription = function(catBreed, callback) {
   request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed}`, (error, response, body) => {
     // keep above data declaration
-    if (error !== null) {
-      console.log('OOPS 1')
-      return error;
-    }
+    // keep above data declaration
+    // if (error !== null) {
+    //   callback(error);
+    // }
 
     // use JSON.parse to convert the JSON string into an actual object
     // data declaration
     const data = JSON.parse(body);
     let description = data[0].description
 
-    if (description.length === 0) {
-      console.log('OOPS 2')
-      return error;
+    if (description.length === undefined) {
+      let error = console.log('Could not find this breed!')
+      let description = null
+      callback(error, description);
+    }
 
-    } else {
-      console.log('OOPS 3')
-      return description;
-  }
-});
+    if (error === null) {
+      callback(error, description)
+    }
+  })
 }
 
 module.exports = { fetchBreedDescription };
