@@ -30,11 +30,10 @@ const fetchBreedDescription = function(catBreed, callback) {
     const data = JSON.parse(body);
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     
-    if (!data[0]) {
+    if (data[0] === undefined) {
       callback(null);
+      return // Needs to return here to fix error bug
     }
-
-    let description = data[0].description;
 
     if (error === null) {
       callback(error, description);
