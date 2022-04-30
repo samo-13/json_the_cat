@@ -32,8 +32,10 @@ const fetchBreedDescription = function(catBreed, callback) {
     
     if (data[0] === undefined) {
       callback(null);
-      return // Needs to return here to fix error bug
+      return; // Needs to return here to fix error bug
     }
+
+    let description = data[0].description; // keep below above if statements
 
     if (error === null) {
       callback(error, description);
