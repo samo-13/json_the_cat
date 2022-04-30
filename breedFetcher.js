@@ -16,25 +16,30 @@ const fetchBreedDescription = function(catBreed, callback) {
   request(`https://api.thecatapi.com/v1/breeds/search?q=${catBreed}`, (error, response, body) => {
     // keep above data declaration
     // keep above data declaration
-    // if (error !== null) {
-    //   callback(error);
-    // }
+    if (error !== null) {
+      callback(error);
+    }
 
     // use JSON.parse to convert the JSON string into an actual object
     // data declaration
-    const data = JSON.parse(body);
-    let description = data[0].description
 
-    if (description.length === undefined) {
-      let error = console.log('Could not find this breed!')
-      let description = null
-      callback(error, description);
+    if (body.length === undefined) {
+      callback(error, null);
     }
+
+    const data = JSON.parse(body);
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    
+    if (!data[0]) {
+      callback(null);
+    }
+
+    let description = data[0].description;
 
     if (error === null) {
-      callback(error, description)
+      callback(error, description);
     }
-  })
-}
+  });
+};
 
 module.exports = { fetchBreedDescription };
